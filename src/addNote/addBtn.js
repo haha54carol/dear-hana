@@ -45,7 +45,7 @@ class DogImage extends Component {
   }
 }
 
-export default class Btns extends Component {
+export default class HomeScreen extends Component {
   render() {
     return (
       <View>
@@ -53,7 +53,13 @@ export default class Btns extends Component {
         <DelBtn onPress={this.props.deleteNote} />
         <DogImage url={this.props.note.url} fetchDog={this.props.callRequest} />
         <Text>{this.props.note.count}</Text>
-        <Text>test</Text>
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate('NewNote')}
+          style={styles.button}
+        >
+          <Text>New Note</Text>
+        </TouchableOpacity>
+
       </View>
     )
   }
