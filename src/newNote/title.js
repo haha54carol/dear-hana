@@ -3,15 +3,15 @@ import { StyleSheet, Text } from 'react-native'
 import { color, fontSize } from '../theme'
 
 export default Title = ({ title }) => (
-    <Text style={style.container}>
+    <Text style={style.text}>
         {title}
     </Text>
 )
 
 
 const style = StyleSheet.create({
-    container: {
-        alignItems: 'flex-start',
+    text: {
+        alignItems: 'center',
         color: color.font,
         fontSize: fontSize.h1
     }

@@ -8,7 +8,8 @@ export default class NewNote extends Component {
     render() {
         return (
             <View style={style.container}>
-                <Text> test !</Text>
+                <Title title='h1' />
+                <Text>new note</Text>
             </View>
         )
     }
@@ -16,7 +17,6 @@ export default class NewNote extends Component {
 
 const style = StyleSheet.create({
     container: {
-        backgroundColor: '#fff',
-        color: '#565656',
+        backgroundColor: color.background,
     }
 })

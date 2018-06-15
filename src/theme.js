@@ -1,7 +1,9 @@
 export const color = {
-    background: '#ffffff',
+    background: '#fbfbfb',
     font: '#565656',
-    border: '#e8e8e8'
+    border: '#d1d5da',
+    searchBackground: '#e4e4e4',
+    title: '#4a4a4a'
 }
 
 export const fontSize = {
@@ -14,3 +16,6 @@ export const fontSize = {
     h1: 22
 }
 
+export const padding = {
+    home: 20
+}

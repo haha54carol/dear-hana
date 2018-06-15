@@ -54,7 +54,7 @@ export default class HomeScreen extends Component {
         <DogImage url={this.props.note.url} fetchDog={this.props.callRequest} />
         <Text>{this.props.note.count}</Text>
         <TouchableOpacity
-          onPress={() => this.props.navigation.navigate('NewNote')}
+          onPress={() => this.props.navigation.navigate('List')}
           style={styles.button}
         >
           <Text>New Note</Text>
