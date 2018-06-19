@@ -1,39 +1,58 @@
 import React, { Component } from 'react';
-import { View, Text, SectionList, FlatList } from 'react-native';
+import { View, Text, SectionList, FlatList, AsyncStorage } from 'react-native';
+import keys from '../keys'
 import Note, { Title } from './note'
 
 
-const overrideRenderItem = ({ item, index, section: { title, data } }) => <Text key={index}>Override {item}</Text>
-
-// export default class List extends Component {
-//     render() {
-//         return (
-//             <SectionList
-//                 renderItem={({ item, index, section }) => <Note item={item} index={index} />}
-//                 renderSectionHeader={({ section: { title } }) => (
-//                     <Title title={title} />
-//                 )}
-//                 sections={[
-//                     { title: 'Title1', data: ['item1', 'item2'], renderItem: overrideRenderItem },
-//                     { title: 'Title2', data: ['item3', 'item4'] },
-//                     { title: 'Title3', data: ['item5', 'item6'] },
-//                 ]}
-//             />
-//         );
-//     }
-// }
+//const overrideRenderItem = ({ item, index, section: { title, data } }) => <Text key={index}>Override {item}</Text>
 
 export default class List extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            myNotes: [],
+            isLoading: true,
+            error: false
+        }
+    }
+
+    async getMyNotes() {
+        try {
+            let data = await AsyncStorage.getItem(keys.myNotes)
+            this.setState({
+                myNotes: JSON.parse(data),
+                isLoading: false
+            })
+        } catch (error) {
+            this.setState({
+                error: true,
+                isLoading: false
+            })
+        }
+    }
+
+    componentDidMount() {
+        this.getMyNotes()
+    }
+
     render() {
         const { navigation } = this.props
+        const { myNotes, isLoading, error } = this.state
+        if (isLoading) {
+            return <Text>Loading</Text>
+        }
+
+        if (error) {
+            return <Text>Error ... (x_x)/ </Text>
+        }
+
         return (
             <FlatList
-                data={[
-                    { title: 'Title1', content: 'content 1' },
-                    { title: 'Title2', content: 'Link notes to each other to build a body of work. Use hashtags to organize for the way you think. All notes are stored in portable plain text.' },
-                    { title: 'Title3', content: 'content 3' }]}
+                data={myNotes}
                 renderItem={({ item, index }) => <Note title={item.title} navigation={navigation} content={item.content} index={index} />}
             />
         )
     }
 }
+
+// notes = [{key, content}, {key, content}]
