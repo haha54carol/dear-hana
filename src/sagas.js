@@ -1,5 +1,6 @@
 import { takeLatest, call, put, fork } from 'redux-saga/effects';
 import axios from 'axios';
+import watcherNote from './Home/saga'
 
 function* watcherCallAPI() {
     yield takeLatest('API_CALL_REQUEST', workerCallAPISaga)
@@ -25,8 +26,10 @@ function* workerCallAPISaga() {
 
 
 const sagas = [
-    watcherCallAPI
+    watcherCallAPI, watcherNote
 ]
+
+
 
 export default function* root() {
     yield sagas.map(saga => fork(saga));

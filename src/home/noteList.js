@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, SectionList, FlatList, AsyncStorage } from 'react-native';
+import { View, Text, FlatList } from 'react-native';
 import keys from '../keys'
-import Note, { Title } from './note'
-
-
-//const overrideRenderItem = ({ item, index, section: { title, data } }) => <Text key={index}>Override {item}</Text>
+import Note from './note'
 
 export default class List extends Component {
     constructor(props) {
@@ -16,43 +13,18 @@ export default class List extends Component {
         }
     }
 
-    async getMyNotes() {
-        try {
-            let data = await AsyncStorage.getItem(keys.myNotes)
-            this.setState({
-                myNotes: JSON.parse(data),
-                isLoading: false
-            })
-        } catch (error) {
-            this.setState({
-                error: true,
-                isLoading: false
-            })
-        }
-    }
-
-    componentDidMount() {
-        this.getMyNotes()
-    }
 
     render() {
-        const { navigation } = this.props
-        const { myNotes, isLoading, error } = this.state
-        if (isLoading) {
-            return <Text>Loading</Text>
-        }
+        const { navigation, noteList } = this.props
 
-        if (error) {
-            return <Text>Error ... (x_x)/ </Text>
-        }
+        if (noteList.length == 0)
+            return (<View><Text>Write Something....</Text></View>)
 
         return (
             <FlatList
-                data={myNotes}
+                data={noteList}
                 renderItem={({ item, index }) => <Note title={item.title} navigation={navigation} content={item.content} index={index} />}
             />
         )
     }
 }
-
-// notes = [{key, content}, {key, content}]

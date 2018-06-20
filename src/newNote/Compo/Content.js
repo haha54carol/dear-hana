@@ -1,31 +1,17 @@
 import React, { Component } from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
 
-export default class NoteInput extends Component {
-
-    // constructor(props) {
-    //     super(props)
-    //     this.state = {
-    //         text: null
-    //     }
-    // }
-
-    // onTextChange(text) {
-    //     this.setState({
-    //         text: text
-    //     })
-    // }
-
+export default class Content extends Component {
     render() {
-        const { onContentChange, content } = this.props
+        const { onChange, content } = this.props
         return (
             <View style={style.container}>
                 <TextInput
-                    style={style.contentText}
+                    style={style.text}
                     editable={true}
                     multiline={true}
                     underlineColorAndroid="transparent"
-                    onChangeText={onContentChange}
+                    onChangeText={onChange}
                     value={content}
                 />
             </View>
@@ -38,7 +24,8 @@ const style = StyleSheet.create({
         padding: 20,
     },
 
-    contentText: {
+    text: {
         fontSize: 18
     }
+
 })
