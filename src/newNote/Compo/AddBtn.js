@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'
-
+import { color } from '../../theme'
 
 export default class AddBtn extends Component {
     render() {
@@ -19,7 +19,7 @@ const style = StyleSheet.create({
         position: 'absolute',
         width: 50,
         height: 50,
-        backgroundColor: '#DD4C4F',
+        backgroundColor: color.primary,
         bottom: 120,
         right: 20,
         borderRadius: 50,

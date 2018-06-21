@@ -8,17 +8,15 @@ import Btn from '../newNote/Compo/AddBtn'
 
 export default class componentName extends Component {
 
-
-
     render() {
 
         return (
             <View style={style.container}>
                 <SearchBar />
                 <List
+                    deleteNote={this.props.deleteNote}
                     noteList={this.props.noteList}
-                    navigation={this.props.navigation}
-                    notesListRequest={this.props.notesListRequest} />
+                    navigation={this.props.navigation} />
                 <Btn navigation={this.props.navigation} />
             </View>
         );

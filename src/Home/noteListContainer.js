@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import Comp from './index'
-import { notesListRequest } from './actionsReducers'
-
+import { deleteNote } from './actionsReducers'
 
 const mapStateToProps = (state) => {
     return {
@@ -10,7 +9,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    notesListRequest
+    deleteNote
 }
 
 

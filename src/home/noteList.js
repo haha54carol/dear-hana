@@ -15,7 +15,7 @@ export default class List extends Component {
 
 
     render() {
-        const { navigation, noteList } = this.props
+        const { navigation, noteList, deleteNote } = this.props
 
         if (noteList.length == 0)
             return (<View><Text>Write Something....</Text></View>)
@@ -23,7 +23,13 @@ export default class List extends Component {
         return (
             <FlatList
                 data={noteList}
-                renderItem={({ item, index }) => <Note title={item.title} navigation={navigation} content={item.content} index={index} />}
+                renderItem={({ item, index }) =>
+                    <Note
+                        note={item}
+                        navigation={navigation}
+                        index={index}
+                        deleteNote={deleteNote}
+                    />}
             />
         )
     }

@@ -3,7 +3,8 @@ export const color = {
     font: '#565656',
     border: '#d1d5da',
     searchBackground: '#e4e4e4',
-    title: '#4a4a4a'
+    title: '#4a4a4a',
+    primary: '#DD4C4F'
 }
 
 export const fontSize = {
