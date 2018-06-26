@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native'
 
 import { connect } from 'react-redux';
-import { addNote } from '../Home/actionsReducers'
+import { addNote, updateNote } from '../Home/actionsReducers'
 import Title from './Compo/Title'
 import Content from './Compo/Content'
 
@@ -10,28 +10,50 @@ import Content from './Compo/Content'
 class NewNote extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            title: '',
-            content: ''
+        const { navigation, byId } = props
+        const id = navigation.getParam('id', null)
+
+        if (id) {
+            const { title, content } = byId[id]
+
+            this.state = {
+                id, title, content
+            }
+        } else {
+            this.state = {
+                title: '',
+                content: ''
+            }
         }
 
         this.onContentChange = this.onContentChange.bind(this)
         this.onTitleChange = this.onTitleChange.bind(this)
-
     }
 
     componentWillUnmount() {
-        const { addNote } = this.props
-        const { title, content } = this.state
+        const { addNote, updateNote } = this.props
+        const { title, content, id } = this.state
 
-        const t = new Date()
-        addNote({
-            id: t.getTime().toString(),
-            title,
-            content,
-            isPined: false,
-            timestamp: t
-        })
+        const timestamp = new Date()
+
+        if (id) {
+            updateNote({
+                id,
+                title,
+                content,
+                timestamp
+            })
+        } else {
+            addNote({
+                id: timestamp.getTime().toString(),
+                title,
+                content,
+                isPined: false,
+                timestamp
+            })
+        }
+
+
     }
 
     onTitleChange(text) {
@@ -65,10 +87,15 @@ const style = StyleSheet.create({
     }
 })
 
-const mapStateToProps = () => ({})
+const mapStateToProps = (state) => {
+    const { noteList: { byId } } = state
+    return {
+        byId
+    }
+}
 
 const mapDispatchToProps = {
-    addNote
+    addNote, updateNote
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewNote)

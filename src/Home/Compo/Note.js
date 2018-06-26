@@ -66,7 +66,7 @@ export default class Note extends Component {
                 <TouchableHighlight
                     underlayColor='white'
                     key={index}
-                    onPress={() => navigation.navigate('Home')}
+                    onPress={() => navigation.navigate('NewNote', { id })}
                     style={style.border}
                 >
                     <View style={style.noteContainer} key={`view_${index}`}>

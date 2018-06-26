@@ -3,7 +3,7 @@ import { combineReducers } from 'redux'
 export const addNote = createAction('ADD_NOTE')
 export const deleteNote = createAction('DELETE_NOTE')
 export const resetNoteList = createAction('RESET_NOTELIST')
-
+export const updateNote = createAction('UPDATE_NOTE')
 export const pinNote = createAction('PIN_NOTE')
 export const unPinNote = createAction('UNPIN_NOTE')
 
@@ -24,6 +24,18 @@ const byId = handleActions({
 
             return acc
         }, {})
+    },
+    [updateNote]: (state, action) => {
+        let { id, content, title, timestamp } = action.payload
+        return {
+            ...state,
+            [id]: {
+                ...state[id],
+                content,
+                title,
+                timestamp
+            }
+        }
     },
     [pinNote]: (state, action) => {
         let id = action.payload
