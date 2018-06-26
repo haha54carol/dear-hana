@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native'
-
+import Icon from 'react-native-vector-icons/FontAwesome'
 import { connect } from 'react-redux';
 import { addNote, updateNote } from '../Home/actionsReducers'
 import Title from './Compo/Title'
 import Content from './Compo/Content'
-
+import { color } from '../theme'
 
 class Note extends Component {
+
+    static navigationOptions = {
+        headerBackImage: <Icon name="angle-left" size={35} style={{
+            color: color.thirdary,
+            paddingLeft: 15
+        }} />
+    }
+
     constructor(props) {
         super(props)
         const { navigation, byId } = props
@@ -80,9 +88,9 @@ class Note extends Component {
 
 const style = StyleSheet.create({
     container: {
-        backgroundColor: '#fff',
+        backgroundColor: color.white,
         flex: 1,
-        padding: 20,
+        padding: 13,
         flexDirection: 'column'
     }
 })

@@ -10,6 +10,12 @@ import { connect } from 'react-redux';
 import { deleteNote, pinNote, unPinNote, resetNoteList } from './actionsReducers'
 
 class Compo extends Component {
+    static navigationOptions = {
+        title: 'Home',
+        headerStyle: {
+            backgroundColor: '#fff',
+        }
+    }
 
     render() {
         const { deleteNote, pinNote, unPinNote, noteList: { byId }, navigation } = this.props
