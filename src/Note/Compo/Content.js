@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, TextInput, Text, StyleSheet } from 'react-native';
+import { color, fontSize } from '../../theme'
 
 export default class Content extends Component {
     render() {
@@ -21,14 +22,15 @@ export default class Content extends Component {
 
 const style = StyleSheet.create({
     container: {
-        paddingTop: 15,
-        paddingRight: 12,
-        paddingLeft: 12,
+        paddingTop: 30,
+        paddingRight: 13,
+        paddingLeft: 13,
         paddingBottom: 15,
     },
 
     text: {
-        fontSize: 18
+        fontSize: fontSize.h3,
+        color: color.secondary
     }
 
 })

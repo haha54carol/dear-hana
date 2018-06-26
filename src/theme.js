@@ -18,7 +18,7 @@ export const fontSize = {
     h4: 16,
     h3: 18,
     h2: 20,
-    h1: 22
+    h1: 24,
 }
 
 export const padding = {

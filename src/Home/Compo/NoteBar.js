@@ -28,6 +28,25 @@ moment.locale('en', {
 
 export default class NoteBar extends Component {
 
+    constructor(props) {
+        super(props)
+        this.state = {
+            pressStatus: false
+        }
+    }
+
+    _onHideUnderlay() {
+        this.setState({
+            pressStatus: false
+        })
+    }
+
+    _onShowUnderlay() {
+        this.setState({
+            pressStatus: true
+        })
+    }
+
     render() {
         const { index, note: { title, content, timestamp, id }, navigation, deleteNote, pinNote, unPinNote, isPined } = this.props
 
@@ -67,7 +86,9 @@ export default class NoteBar extends Component {
                     underlayColor='white'
                     key={index}
                     onPress={() => navigation.navigate('Note', { id })}
-                    style={style.border}
+                    style={this.state.pressStatus ? style.borderActive : null}
+                    onShowUnderlay={this._onShowUnderlay.bind(this)}
+                    onHideUnderlay={this._onHideUnderlay.bind(this)}
                 >
                     <View style={style.noteContainer} key={`view_${index}`}>
                         <View style={style.dateTimeContainer}>
@@ -140,8 +161,9 @@ const style = StyleSheet.create({
         fontSize: 15
     },
 
-    border: {
-        borderLeftColor: color.thirdary,
+    borderActive: {
+        borderLeftColor: color.primary,
+        borderLeftWidth: 2.5
 
     },
 

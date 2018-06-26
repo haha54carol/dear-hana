@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput, StyleSheet } from 'react-native';
+import { fontSize, color } from '../../theme'
 
 export default class Title extends Component {
     render() {
@@ -23,7 +24,7 @@ export default class Title extends Component {
 const style = StyleSheet.create({
     container: {
         flexDirection: 'row',
-        height: 30,
+        height: 50,
     },
 
     prefix: {
@@ -31,14 +32,14 @@ const style = StyleSheet.create({
     },
 
     prefixText: {
-        fontSize: 16,
-        color: '#b5bdc6',
+        fontSize: fontSize.h4,
+        color: color.thirdary,
         height: 30,
         paddingTop: 10,
     },
 
     titleText: {
-        fontSize: 22,
+        fontSize: fontSize.h1,
         fontWeight: 'bold',
         height: 40,
         flex: 1,
