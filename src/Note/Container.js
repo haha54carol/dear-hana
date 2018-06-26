@@ -25,12 +25,13 @@ class Note extends Component {
             const { title, content } = byId[id]
 
             this.state = {
-                id, title, content
+                id, title, content, edit: false
             }
         } else {
             this.state = {
                 title: '',
-                content: ''
+                content: '',
+                edit: false
             }
         }
 
@@ -40,18 +41,18 @@ class Note extends Component {
 
     componentWillUnmount() {
         const { addNote, updateNote } = this.props
-        const { title, content, id } = this.state
+        const { title, content, id, edit } = this.state
 
         const timestamp = new Date()
 
-        if (id) {
+        if (id && edit) {
             updateNote({
                 id,
                 title,
                 content,
                 timestamp
             })
-        } else {
+        } else if (edit) {
             addNote({
                 id: timestamp.getTime().toString(),
                 title,
@@ -61,19 +62,26 @@ class Note extends Component {
             })
         }
 
-
     }
 
     onTitleChange(text) {
-        this.setState({
-            title: text
-        })
+        if (text !== '' || text !== null) {
+            this.setState({
+                title: text,
+                edit: true
+            })
+        }
+
     }
 
     onContentChange(text) {
-        this.setState({
-            content: text
-        })
+        if (text !== '' || text !== null) {
+            this.setState({
+                content: text,
+                edit: true
+            })
+        }
+
     }
 
     render() {
