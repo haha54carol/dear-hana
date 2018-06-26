@@ -7,7 +7,7 @@ import Title from './Compo/Title'
 import Content from './Compo/Content'
 
 
-class NewNote extends Component {
+class Note extends Component {
     constructor(props) {
         super(props)
         const { navigation, byId } = props
@@ -98,4 +98,4 @@ const mapDispatchToProps = {
     addNote, updateNote
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewNote)
+export default connect(mapStateToProps, mapDispatchToProps)(Note)

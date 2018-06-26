@@ -18,7 +18,7 @@ export default class SearchBar extends Component {
                         style={style.input}
                         underlineColorAndroid="transparent"
                         placeholder="Search Notes"
-                        placeholderTextColor="#a7a7a9"
+                        placeholderTextColor={color.searchText}
                         onChangeText={(text) => this.setState({ text })}
                         value={this.state.text}
                     />
@@ -41,14 +41,15 @@ const style = StyleSheet.create({
         borderRadius: 5,
         flexDirection: 'row',
         borderWidth: 1.5,
-        borderColor: '#e5e4ea',
-        backgroundColor: '#fff'
+        borderColor: color.searchBorder,
+        backgroundColor: color.white
     },
     text: {
         flex: 1,
         textAlign: 'center',
         lineHeight: 40,
-        color: '#a7a7a9',
+        color: color.searchText,
+        fontSize: fontSize.h4
     },
     icon: {
         color: '#a7a7a9',
@@ -56,8 +57,8 @@ const style = StyleSheet.create({
     },
     input: {
         borderWidth: 0,
-        fontSize: fontSize.h5,
-        color: '#a7a7a9',
+        fontSize: fontSize.h4,
+        color: color.primary,
         flex: 1,
         paddingTop: 2,
         borderRadius: 5,

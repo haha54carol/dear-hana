@@ -21,7 +21,10 @@ export default class Content extends Component {
 
 const style = StyleSheet.create({
     container: {
-        padding: 20,
+        paddingTop: 15,
+        paddingRight: 12,
+        paddingLeft: 12,
+        paddingBottom: 15,
     },
 
     text: {

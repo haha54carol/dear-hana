@@ -4,19 +4,18 @@ import { Provider } from 'react-redux';
 import appStore from './src/store';
 import { PersistGate } from 'redux-persist/integration/react'
 
-import HomeScreen from './src/addNote/addBtnContainer'
-import NewNoteScreen from './src/NewNote/Container'
+//import HomeScreen from './src/addNote/addBtnContainer'
+import NoteScreen from './src/Note/Container'
 //import ListScreen from './src/home/index'
-import ListScreen from './src/Home/Container'
+import HomeScreen from './src/Home/Container'
 
 const RootStack = createStackNavigator(
     {
         Home: HomeScreen,
-        NewNote: NewNoteScreen,
-        List: ListScreen
+        Note: NoteScreen
     },
     {
-        initialRouteName: 'List'
+        initialRouteName: 'Home'
     }
 )
 

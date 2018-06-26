@@ -1,8 +1,9 @@
 export const color = {
     background: '#fbfbfb',
-    font: '#565656',
     border: '#d1d5da',
     searchBackground: '#e4e4e4',
+    searchBorder: '#e5e4ea',
+    searchText: '#a7a7a9',
     title: '#4a4a4a',
     primary: '#DD4C4F',
     secondary: '#4a4a4a',

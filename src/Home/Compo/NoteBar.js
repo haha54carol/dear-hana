@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import moment from 'moment'
 import Swipeout from 'react-native-swipeout'
-import { color } from '../../theme'
+import { color, fontSize } from '../../theme'
 
 
 moment.locale('en', {
@@ -26,7 +26,7 @@ moment.locale('en', {
 });
 
 
-export default class Note extends Component {
+export default class NoteBar extends Component {
 
     render() {
         const { index, note: { title, content, timestamp, id }, navigation, deleteNote, pinNote, unPinNote, isPined } = this.props
@@ -66,7 +66,7 @@ export default class Note extends Component {
                 <TouchableHighlight
                     underlayColor='white'
                     key={index}
-                    onPress={() => navigation.navigate('NewNote', { id })}
+                    onPress={() => navigation.navigate('Note', { id })}
                     style={style.border}
                 >
                     <View style={style.noteContainer} key={`view_${index}`}>
@@ -90,7 +90,7 @@ export default class Note extends Component {
 const style = StyleSheet.create({
     titleText: {
         fontWeight: 'bold',
-        fontSize: 20,
+        fontSize: fontSize.h2,
         color: color.secondary,
         height: 40,
         lineHeight: 40,
@@ -98,7 +98,7 @@ const style = StyleSheet.create({
     contentText: {
         color: color.thirdary,
         height: 65,
-        fontSize: 15,
+        fontSize: fontSize.h4,
         paddingBottom: 5,
         lineHeight: 23,
     },
@@ -122,6 +122,7 @@ const style = StyleSheet.create({
         color: color.thirdary,
         padding: 10,
         textAlign: 'center',
+        fontSize: fontSize.h4
     },
 
     iconContainer: {

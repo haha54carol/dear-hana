@@ -4,7 +4,7 @@ import { View, StyleSheet, FlatList } from 'react-native';
 import { color } from '../theme'
 import SearchBar from './Compo/SearchBar'
 import AddBtn from '../Home/Compo/AddBtn'
-import Note from './Compo/Note'
+import NoteBar from './Compo/NoteBar'
 import Greenting from './Compo/Greeting'
 import { connect } from 'react-redux';
 import { deleteNote, pinNote, unPinNote, resetNoteList } from './actionsReducers'
@@ -38,7 +38,7 @@ class Compo extends Component {
                             <FlatList
                                 data={pinedNotes}
                                 renderItem={({ item, index }) =>
-                                    <Note
+                                    <NoteBar
                                         note={item}
                                         pinNote={pinNote}
                                         navigation={navigation}
@@ -57,7 +57,7 @@ class Compo extends Component {
                             <FlatList
                                 data={unPinedNotes}
                                 renderItem={({ item, index }) =>
-                                    <Note
+                                    <NoteBar
                                         note={item}
                                         pinNote={pinNote}
                                         navigation={navigation}

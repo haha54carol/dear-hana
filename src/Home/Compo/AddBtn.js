@@ -7,7 +7,7 @@ export default class AddBtn extends Component {
     render() {
         const { navigation } = this.props
         return (
-            <TouchableOpacity style={style.btn} activeOpacity={.5} onPress={() => navigation.navigate('NewNote')} >
+            <TouchableOpacity style={style.btn} activeOpacity={.5} onPress={() => navigation.navigate('Note')} >
                 <Icon name="pencil" size={25} style={style.icon} />
             </TouchableOpacity>
         );
@@ -20,9 +20,10 @@ const style = StyleSheet.create({
         width: 50,
         height: 50,
         backgroundColor: color.primary,
-        bottom: 150,
+        bottom: 20,
         right: 20,
         borderRadius: 50,
+
     },
     icon: {
         color: '#fff',
