@@ -8,7 +8,7 @@ export default class AddBtn extends Component {
         const { navigation } = this.props
         return (
             <TouchableOpacity style={style.btn} activeOpacity={.5} onPress={() => navigation.navigate('NewNote')} >
-                <Icon name="file" size={30} style={style.icon} />
+                <Icon name="pencil" size={25} style={style.icon} />
             </TouchableOpacity>
         );
     }
@@ -20,13 +20,13 @@ const style = StyleSheet.create({
         width: 50,
         height: 50,
         backgroundColor: color.primary,
-        bottom: 120,
+        bottom: 150,
         right: 20,
         borderRadius: 50,
     },
     icon: {
         color: '#fff',
-        paddingTop: 10,
-        paddingLeft: 13,
+        paddingTop: 12,
+        paddingLeft: 14,
     }
 })

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput, StyleSheet } from 'react-native';
-import { fontSize, color } from '../theme'
+import { fontSize, color } from '../../theme'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 export default class SearchBar extends Component {
@@ -33,7 +33,8 @@ const style = StyleSheet.create({
     c1: {
         borderRadius: 5,
         flexDirection: 'row',
-        margin: 10,
+        margin: 15,
+        height: 45
     },
     c2: {
         flex: 6,

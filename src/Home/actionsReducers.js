@@ -1,18 +1,67 @@
 import { createAction, handleActions } from 'redux-actions'
-
+import { combineReducers } from 'redux'
 export const addNote = createAction('ADD_NOTE')
 export const deleteNote = createAction('DELETE_NOTE')
+export const resetNoteList = createAction('RESET_NOTELIST')
 
-const defaultState = []
+export const pinNote = createAction('PIN_NOTE')
+export const unPinNote = createAction('UNPIN_NOTE')
 
-//reducer
-export default handleActions({
-    [addNote]: (state, action) => ([
+
+const byId = handleActions({
+    [addNote]: (state, action) => {
+        return {
+
+            [action.payload.id]: action.payload,
+            ...state,
+        }
+    },
+    [deleteNote]: (state, action) => {
+        return Object.keys(state).reduce((acc, key) => {
+            if (key != action.payload) {
+                return { ...acc, [key]: state[key] }
+            }
+
+            return acc
+        }, {})
+    },
+    [pinNote]: (state, action) => {
+        let id = action.payload
+        return {
+            ...state,
+            [id]: {
+                ...state[action.payload],
+                isPined: true
+            }
+        }
+    },
+    [unPinNote]: (state, action) => {
+        return {
+            ...state,
+            [action.payload]: {
+                ...state[action.payload],
+                isPined: false
+            }
+        }
+    },
+    [resetNoteList]: (state, action) => {
+        return {}
+    },
+}, {})
+
+const pinedIds = handleActions({
+    [pinNote]: (state, action) => ([
         action.payload, ...state
     ]),
+    [resetNoteList]: () => ([]),
+    [unPinNote]: (state, action) => {
+        return state.filter(item => item !== action.payload)
+    },
     [deleteNote]: (state, action) => {
-
-        return state.filter(item => item.timestamp != action.payload)
+        return state.filter(item => item !== action.payload)
     }
+}, [])
 
-}, defaultState)
+export default combineReducers({
+    byId, pinedIds
+})

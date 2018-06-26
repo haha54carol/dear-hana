@@ -5,9 +5,9 @@ import appStore from './src/store';
 import { PersistGate } from 'redux-persist/integration/react'
 
 import HomeScreen from './src/addNote/addBtnContainer'
-import NewNoteScreen from './src/newNote/Container'
+import NewNoteScreen from './src/NewNote/Container'
 //import ListScreen from './src/home/index'
-import ListScreen from './src/Home/noteListContainer'
+import ListScreen from './src/Home/Container'
 
 const RootStack = createStackNavigator(
     {

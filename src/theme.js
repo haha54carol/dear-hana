@@ -4,7 +4,10 @@ export const color = {
     border: '#d1d5da',
     searchBackground: '#e4e4e4',
     title: '#4a4a4a',
-    primary: '#DD4C4F'
+    primary: '#DD4C4F',
+    secondary: '#4a4a4a',
+    thirdary: '#b5bdc6',
+    white: '#fff'
 }
 
 export const fontSize = {

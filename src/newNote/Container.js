@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native'
 
 import { connect } from 'react-redux';
-import moment from 'moment'
 import { addNote } from '../Home/actionsReducers'
 import Title from './Compo/Title'
 import Content from './Compo/Content'
@@ -25,10 +24,13 @@ class NewNote extends Component {
         const { addNote } = this.props
         const { title, content } = this.state
 
+        const t = new Date()
         addNote({
+            id: t.getTime().toString(),
             title,
             content,
-            timestamp: new Date()
+            isPined: false,
+            timestamp: t
         })
     }
 
