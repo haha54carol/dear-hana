@@ -85,7 +85,7 @@ export default class NoteBar extends Component {
                 <TouchableHighlight
                     underlayColor='white'
                     key={index}
-                    onPress={() => navigation.navigate('Note', { id })}
+                    onPress={() => navigation.push('Note', { id })}
                     style={this.state.pressStatus ? style.borderActive : null}
                     onShowUnderlay={this._onShowUnderlay.bind(this)}
                     onHideUnderlay={this._onHideUnderlay.bind(this)}

@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, SafeAreaView } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { connect } from 'react-redux';
+import { createStackNavigator } from 'react-navigation'
+
 import { addNote, updateNote } from '../Home/actionsReducers'
 import Title from './Compo/Title'
 import Content from './Compo/Content'
 import { color } from '../theme'
+import HeaderFnBar from './Compo/HeaderFnBar'
 
 class Note extends Component {
 
@@ -13,7 +16,8 @@ class Note extends Component {
         headerBackImage: <Icon name="angle-left" size={35} style={{
             color: color.thirdary,
             paddingLeft: 15
-        }} />
+        }} />,
+        headerRight: <HeaderFnBar />,
     }
 
     constructor(props) {
@@ -85,21 +89,32 @@ class Note extends Component {
     }
 
     render() {
+        const { navigation } = this.props
         return (
-            <View style={style.container}>
-                <Title title={this.state.title} onChange={this.onTitleChange} />
-                <Content content={this.state.content} onChange={this.onContentChange} />
-            </View>
+            <SafeAreaView style={style.c1}>
+
+                <HeaderFnBar navigation={navigation} />
+                <View style={style.c2}>
+                    <Title title={this.state.title} onChange={this.onTitleChange} />
+                    <Content content={this.state.content} onChange={this.onContentChange} />
+                </View>
+            </SafeAreaView>
         )
     }
 };
 
 const style = StyleSheet.create({
-    container: {
+    c1: {
         backgroundColor: color.white,
         flex: 1,
-        padding: 13,
+        paddingTop: 30,
         flexDirection: 'column'
+    },
+    c2: {
+        paddingTop: 20,
+        paddingLeft: 20,
+        paddingRight: 20,
+        paddingBottom: 20,
     }
 })
 
@@ -115,3 +130,11 @@ const mapDispatchToProps = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Note)
+
+// const Container = connect(mapStateToProps, mapDispatchToProps)(Note)
+
+// export default createStackNavigator(
+//     {
+//         Note: Container
+//     }
+// )

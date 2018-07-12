@@ -5,9 +5,9 @@ import { color } from '../../theme'
 
 export default class AddBtn extends Component {
     render() {
-        const { navigation } = this.props
+        const { push } = this.props.navigation
         return (
-            <TouchableOpacity style={style.btn} activeOpacity={.5} onPress={() => navigation.navigate('Note')} >
+            <TouchableOpacity style={style.btn} activeOpacity={.5} onPress={() => this.props.navigation.push('Note')} >
                 <Icon name="pencil" size={25} style={style.icon} />
             </TouchableOpacity>
         );
@@ -31,3 +31,4 @@ const style = StyleSheet.create({
         paddingLeft: 14,
     }
 })
+

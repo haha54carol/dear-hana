@@ -6,7 +6,7 @@ export const color = {
     searchText: '#a7a7a9',
     title: '#4a4a4a',
     primary: '#DD4C4F',
-    secondary: '#4a4a4a',
+    secondary: '#292929',
     thirdary: '#b5bdc6',
     white: '#fff'
 }

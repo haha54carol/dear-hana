@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, FlatList } from 'react-native';
+import { View, StyleSheet, FlatList, SafeAreaView, StatusBar } from 'react-native';
 
 import { color } from '../theme'
 import SearchBar from './Compo/SearchBar'
@@ -35,7 +35,7 @@ class Compo extends Component {
         const unPinedNotes = notesSortByTime.filter(item => item.isPined == false)
 
         return (
-            <View style={style.container}>
+            <SafeAreaView style={style.container}>
                 <SearchBar />
                 {Object.keys(byId).length == 0 ? <Greenting /> : null}
                 <View>
@@ -76,7 +76,7 @@ class Compo extends Component {
                     }
                 </View>
                 <AddBtn navigation={this.props.navigation} />
-            </View>
+            </SafeAreaView>
         );
     }
 }
@@ -84,12 +84,11 @@ class Compo extends Component {
 const style = StyleSheet.create({
     container: {
         backgroundColor: color.background,
-        flex: 1
+        flex: 1,
+        paddingTop: 30,
     },
 
 })
-
-
 
 const mapStateToProps = (state) => {
     const { noteList } = state
@@ -104,3 +103,13 @@ const mapDispatchToProps = {
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Compo)
+// const Container = connect(mapStateToProps, mapDispatchToProps)(Compo)
+
+// export default Home = createDrawerNavigator(
+//     {
+//         Home: Container
+//     }, {
+//         contentComponent: Drawer,
+//         drawerWidth: 300
+//     }
+// )
